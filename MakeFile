@@ -1,0 +1,2 @@
+Dz18:
+	g++ -o Dz18 main.cpp User.h User.cpp Chat.cpp Chat.h Message.cpp Message.h

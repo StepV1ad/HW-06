@@ -202,7 +202,7 @@ void Chat::readUserFile()
 {
 	std::string login, password, name;
 	int idStorage;
-	std::ifstream user_file = std::ifstream("users.txt", std::ios::beg);
+	std::ifstream user_file = std::ifstream("users.txt");
 	if (user_file.is_open())
 	{
 		while (user_file >> idStorage >> login >> password >> name)
@@ -214,7 +214,7 @@ void Chat::readUserFile()
 void Chat::wrightUserFile()
 {
 	int idStorage = 0;
-	std::ofstream user_file = std::ofstream("users.txt", std::ios::beg);
+	std::ofstream user_file = std::ofstream("users.txt");
 	if (user_file.is_open())
 		for (auto& user : users_)
 			user_file << idStorage++ << " " << user.getUserLogin() << " " << user.getUserPassword() << " " << user.getUserName() << std::endl;
@@ -223,7 +223,7 @@ void Chat::wrightUserFile()
 void Chat::readMessageFile()
 {
 	std::string from, to, text;
-	std::ifstream messages_file = std::ifstream("messages.txt", std::ios::beg);
+	std::ifstream messages_file = std::ifstream("messages.txt");
 	if (messages_file.is_open())
 		while ((messages_file >> from >> to) && getline(messages_file, text))
 			messages_.emplace_back(Message{ from, to, text });
@@ -231,7 +231,7 @@ void Chat::readMessageFile()
 
 void Chat::wrightMessageFile()
 {
-	std::ofstream messages_file = std::ofstream("messages.txt", std::ios::beg);
+	std::ofstream messages_file = std::ofstream("messages.txt");
 	if (messages_file.is_open())
 		for (auto& messages : messages_)
 			messages_file << messages.getFrom() << " " << messages.getTo() << " " << messages.getText() << std::endl;
@@ -240,7 +240,7 @@ void Chat::wrightMessageFile()
 void Chat::readCommonChatFile()
 {
 	std::string from, to, text;
-	std::ifstream commonChat_file = std::ifstream("commonChat.txt", std::ios::beg);
+	std::ifstream commonChat_file = std::ifstream("commonChat.txt");
 	if (commonChat_file.is_open())
 		while ((commonChat_file >> from >> to) && getline(commonChat_file, text))
 			commonChat_.emplace_back(Message{ from, to, text });
@@ -248,7 +248,7 @@ void Chat::readCommonChatFile()
 
 void Chat::wrightCommonChatFile()
 {
-	std::ofstream commonChat_file = std::ofstream("commonChat.txt", std::ios::beg);
+	std::ofstream commonChat_file = std::ofstream("commonChat.txt");
 	if (commonChat_file.is_open())
 		for (auto& commonChat : commonChat_)
 			commonChat_file << commonChat.getFrom() << " " << commonChat.getTo() << " " << commonChat.getText() << std::endl;
